@@ -1,0 +1,29 @@
+{
+  "version": "2026-11-23-strict",
+  "rules": [
+    {
+      "id": "buyer-de-partners",
+      "effect": "allow",
+      "roles": ["SAP_BR_BUYER"],
+      "entities": ["A_BusinessPartner"],
+      "actions": ["read", "list"],
+      "min_clearance": 1,
+      "same_region": true,
+      "fields": ["BusinessPartner", "LastName", "Region"]
+    },
+    {
+      "id": "external-no-finance",
+      "effect": "deny",
+      "max_clearance": 0,
+      "entities": ["A_BusinessPartner"],
+      "actions": ["read", "list"]
+    },
+    {
+      "id": "office-hours-only",
+      "effect": "deny",
+      "entities": ["A_BusinessPartner"],
+      "actions": ["read"],
+      "only_business_hours": true
+    }
+  ]
+}

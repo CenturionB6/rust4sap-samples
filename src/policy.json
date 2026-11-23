@@ -1,0 +1,60 @@
+{
+  "version": "2026-11-23",
+  "rules": [
+    {
+      "id": "buyer-de-partners",
+      "effect": "allow",
+      "roles": [
+        "SAP_BR_BUYER"
+      ],
+      "entities": [
+        "A_BusinessPartner"
+      ],
+      "actions": [
+        "read",
+        "list"
+      ],
+      "min_clearance": 1,
+      "same_region": true,
+      "fields": [
+        "BusinessPartner",
+        "LastName",
+        "Region"
+      ]
+    },
+    {
+      "id": "controller-region-partners",
+      "effect": "allow",
+      "roles": [
+        "SAP_BR_FIN_CONTROLLER"
+      ],
+      "entities": [
+        "A_BusinessPartner"
+      ],
+      "actions": [
+        "read",
+        "list"
+      ],
+      "min_clearance": 2,
+      "fields": [
+        "BusinessPartner",
+        "LastName",
+        "Region",
+        "IBAN"
+      ],
+      "same_region": true
+    },
+    {
+      "id": "external-no-finance",
+      "effect": "deny",
+      "max_clearance": 0,
+      "entities": [
+        "A_BusinessPartner"
+      ],
+      "actions": [
+        "read",
+        "list"
+      ]
+    }
+  ]
+}
